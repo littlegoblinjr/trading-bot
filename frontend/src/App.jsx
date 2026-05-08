@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Activity,
-  TrendingUp,
-  TrendingDown,
-  ShieldAlert,
   Terminal,
   ArrowUpRight,
   RefreshCw,
-  Wallet,
   Zap,
-  BarChart3
+  BarChart3,
+  ShieldAlert
 } from 'lucide-react';
 
 const API_BASE = 'http://localhost:8000/api';
@@ -23,11 +20,9 @@ function App() {
   const [price, setPrice] = useState('');
   const [stopPrice, setStopPrice] = useState('');
   const [logs, setLogs] = useState([]);
-  const [status, setStatus] = useState('Connected');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
 
-  // Fetch logs periodically
   useEffect(() => {
     const fetchLogs = async () => {
       try {
@@ -80,12 +75,6 @@ function App() {
             <button className="w-full flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl text-binance-green font-medium">
               <BarChart3 className="w-5 h-5" /> Dashboard
             </button>
-            <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-white/5 rounded-xl transition-all">
-              <TrendingUp className="w-5 h-5" /> Markets
-            </button>
-            <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-white/5 rounded-xl transition-all">
-              <Terminal className="w-5 h-5" /> API Config
-            </button>
           </nav>
         </div>
 
@@ -104,7 +93,6 @@ function App() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-8 relative">
-        {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-binance-green/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-3xl rounded-full translate-y-1/2 -translate-x-1/2" />
 
@@ -113,17 +101,9 @@ function App() {
             <h2 className="text-3xl font-bold">Terminal Dashboard</h2>
             <p className="text-gray-400 text-sm mt-1">Manage and monitor your Binance Futures orders.</p>
           </div>
-
-          <div className="flex gap-4">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 rounded-2xl flex flex-col justify-center">
-              <span className="text-[10px] text-gray-500 uppercase font-bold tracking-widest block mb-1">Server Time</span>
-              <span className="text-sm font-mono font-bold text-gray-200">18:24:05.122</span>
-            </div>
-          </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
-          {/* Order Side */}
           <section className="lg:col-span-1">
             <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl">
               <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
@@ -234,31 +214,13 @@ function App() {
             </div>
           </section>
 
-          {/* Logs and Info */}
-          <section className="lg:col-span-2 space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
-                <div className="flex items-center gap-2 mb-4 text-xs text-gray-500 font-bold uppercase tracking-widest">
-                  <Wallet className="w-4 h-4" /> Account Balance
-                </div>
-                <div className="text-2xl font-bold">1,245.82 <span className="text-sm text-gray-500 font-normal">USDT</span></div>
-                <div className="text-binance-green text-[10px] font-bold mt-1 uppercase tracking-tighter">Live Testnet Funds</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
-                <div className="flex items-center gap-2 mb-4 text-xs text-gray-500 font-bold uppercase tracking-widest">
-                  <TrendingUp className="w-4 h-4" /> Unrealized PNL
-                </div>
-                <div className="text-2xl font-bold text-binance-green">+42.15 <span className="text-sm text-gray-500 font-normal">USDT</span></div>
-                <div className="text-gray-500 text-[10px] font-bold mt-1 uppercase tracking-tighter">Active Simulations</div>
-              </div>
-            </div>
-
-            <div className="bg-black/40 border border-white/10 rounded-3xl p-6 h-[500px] flex flex-col">
+          <section className="lg:col-span-2">
+            <div className="bg-black/40 border border-white/10 rounded-3xl p-6 h-[600px] flex flex-col">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-bold flex items-center gap-2">
                   <Terminal className="w-5 h-5 text-binance-green" /> Trading Logs
                 </h3>
-                <span className="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-500">LIVE FEED</span>
+                <span className="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-500 uppercase">Live Feed</span>
               </div>
 
               <div className="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-thin">
