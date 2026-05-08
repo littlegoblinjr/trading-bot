@@ -43,16 +43,19 @@ BINANCE_SECRET_KEY=your_testnet_secret_here
 
 ## 📖 How to Run Examples
 
-### 1. Standard CLI Interface (Requirement)
-Run the main entry point to place orders via terminal:
+### 1. Terminal Interface (Standard & Argparse)
+The CLI tool supports both direct command-line arguments (using `argparse`) and interactive prompts.
+
+**Option A: Direct Command (Professional Mode)**
+```bash
+python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.01
+```
+
+**Option B: Interactive Prompts (Enhanced UX)**
 ```bash
 python cli.py
 ```
-**Example Flow**:
-- Enter Symbol: `BTCUSDT`
-- Enter Side: `BUY`
-- Enter Type: `MARKET`
-- Enter Quantity: `0.002`
+(Simply run the command and it will guide you through the parameters).
 
 ### 2. Modern Dashboard (Bonus)
 If you wish to use the graphical interface:
