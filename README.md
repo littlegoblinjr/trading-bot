@@ -65,6 +65,13 @@ npm install
 npm run dev
 ```
 
+### Terminal CLI Usage
+If you prefer to trade directly from your terminal without the dashboard:
+```bash
+python cli.py
+```
+This utility will prompt you for the symbol, side, and order parameters sequentially.
+
 ## 📁 Project Structure
 
 ```text
@@ -85,4 +92,4 @@ npm run dev
 This project is for educational purposes only. Trading cryptocurrencies involves significant risk. Never trade with money you cannot afford to lose. The authors are not responsible for any financial losses incurred using this software.
 
 ---
-*Created with ❤️ by PrimaTrade Team*
+
