@@ -158,7 +158,7 @@ function App() {
                   <label className="text-xs text-gray-500 font-bold uppercase ml-1">Quantity</label>
                   <div className="relative">
                     <input
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       type="number"
                       step="any"
                       value={quantity}
@@ -174,7 +174,7 @@ function App() {
                   <div className="space-y-1 animate-in slide-in-from-top-2">
                     <label className="text-xs text-gray-500 font-bold uppercase ml-1">Limit Price</label>
                     <input
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       type="number"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
@@ -187,7 +187,7 @@ function App() {
                   <div className="space-y-1 animate-in slide-in-from-top-2">
                     <label className="text-xs text-gray-500 font-bold uppercase ml-1">Stop Price</label>
                     <input
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       type="number"
                       value={stopPrice}
                       onChange={(e) => setStopPrice(e.target.value)}
