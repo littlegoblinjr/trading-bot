@@ -117,14 +117,14 @@ function App() {
                     onClick={() => setSide('BUY')}
                     className={`py-3 rounded-xl font-bold transition-all ${side === 'BUY' ? 'bg-binance-green text-black shadow-lg shadow-binance-green/20' : 'text-gray-500 hover:text-white'}`}
                   >
-                    LONG
+                    BUY
                   </button>
                   <button
                     type="button"
                     onClick={() => setSide('SELL')}
                     className={`py-3 rounded-xl font-bold transition-all ${side === 'SELL' ? 'bg-binance-red text-white shadow-lg shadow-binance-red/20' : 'text-gray-500 hover:text-white'}`}
                   >
-                    SHORT
+                    SELL
                   </button>
                 </div>
 
