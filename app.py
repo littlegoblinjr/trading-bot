@@ -19,6 +19,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+# Mount static files for the frontend (production build)
+DIST_DIR = os.path.join("frontend", "dist")
+if not os.path.exists(DIST_DIR):
+    os.makedirs(DIST_DIR, exist_ok=True)
+
+if os.path.exists(os.path.join(DIST_DIR, "assets")):
+    app.mount("/assets", StaticFiles(directory=os.path.join(DIST_DIR, "assets")), name="assets")
+
+@app.get("/")
+async def read_index():
+    index_path = os.path.join(DIST_DIR, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"message": "Frontend build not found. Run the build script."}
+
 class OrderRequest(BaseModel):
     symbol: str
     side: str
