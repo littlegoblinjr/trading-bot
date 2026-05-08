@@ -1,95 +1,98 @@
-# 🚀 PrimaTrade: Premium Binance Futures Trading Bot
+# 🚀 Binance Futures Trading Bot (Testnet)
 
-PrimaTrade is a high-performance, containerized trading bot for Binance Futures. It features a professional **Glassmorphic Dashboard** built with React and Tailwind CSS, backed by a robust **FastAPI** backend that integrates directly with the Binance API.
+This application is a professional trading bot built for the **Binance Futures Testnet (USDT-M)**. It supports Market, Limit, and Stop orders with robust validation, logging, and error handling.
 
-![Dashboard Preview](https://img.shields.io/badge/Dashboard-Premium-00ff88?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Stack-React_|_FastAPI_|_Docker-blue?style=for-the-badge)
+---
 
-## ✨ Features
+## 📋 Task Deliverables Status
 
-- **💎 Luxury Dashboard**: Modern glassmorphic interface with real-time feedback.
-- **⚡ Execution Support**: Market, Limit, and Stop-Limit orders.
-- **📊 Real-time Monitoring**: Live log feed from the trading engine directly to the browser.
-- **🛡️ Built-in Validation**: Notional value checks and parameter validation to prevent exchange rejections.
-- **🐳 Dockerized**: Seamless deployment using Docker Compose.
-- **📝 Logging Engine**: Comprehensive logging for every trade and API interaction.
+- [x] **Core Requirements**: All met (Market/Limit orders, BUY/SELL, CLI UX).
+- [x] **Logging**: Fully implemented (API requests, responses, and errors saved to `bot/logs/trading.log`).
+- [x] **Validation**: Input and Notional value validation included.
+- [x] **Bonus Feature 1**: Added **STOP** order type support.
+- [x] **Bonus Feature 2**: Enhanced **CLI UX** with interactive prompts.
+- [x] **Bonus Feature 3**: Added a **Glassmorphic React Dashboard**.
 
-## 🛠️ Tech Stack
+---
 
-- **Frontend**: React (Vite), Tailwind CSS, Lucide Icons, Axios.
-- **Backend**: FastAPI, Uvicorn, Pydantic.
-- **Bot Engine**: Python, `python-binance`.
-- **Infrastructure**: Docker, Docker Compose.
+## 🛠️ Setup & Installation
 
-## 🚀 Getting Started
+### 1. Prerequisites
+- Python 3.11+
+- Node.js 20+ (optional, for Dashboard)
+- Binance Futures Testnet API Key & Secret ([Get it here](https://testnet.binancefuture.com/))
 
-### Prerequisites
-
-- [Python 3.11+](https://www.python.org/)
-- [Node.js 20+](https://nodejs.org/)
-- [Docker & Docker Compose](https://www.docker.com/) (Optional but recommended)
-- A [Binance API Key/Secret](https://testnet.binancefuture.com/) (Testnet is recommended for testing).
-
-### Installation (Docker - Recommended)
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/littlegoblinjr/trading-bot.git
-   cd trading-bot
-   ```
-
-2. **Configure Environment Variables**:
-   Create a `.env` file in the root directory:
-   ```env
-   BINANCE_API_KEY=your_api_key
-   BINANCE_SECRET_KEY=your_secret_key
-   ```
-
-3. **Launch the stack**:
-   ```bash
-   docker-compose up --build
-   ```
-
-### Manual Installation
-
-#### 1. Backend
+### 2. Installation
 ```bash
+# Clone and enter the project
+git clone https://github.com/littlegoblinjr/trading-bot.git
+cd trading-bot
+
+# Install backend dependencies
 pip install -r requirements.txt
-python app.py
 ```
 
-#### 2. Frontend
+### 3. Configuration
+Create a `.env` file in the root directory:
+```env
+BINANCE_API_KEY=your_testnet_key_here
+BINANCE_SECRET_KEY=your_testnet_secret_here
+```
+
+---
+
+## 📖 How to Run Examples
+
+### 1. Standard CLI Interface (Requirement)
+Run the main entry point to place orders via terminal:
 ```bash
+python cli.py
+```
+**Example Flow**:
+- Enter Symbol: `BTCUSDT`
+- Enter Side: `BUY`
+- Enter Type: `MARKET`
+- Enter Quantity: `0.002`
+
+### 2. Modern Dashboard (Bonus)
+If you wish to use the graphical interface:
+```bash
+# Start the FastAPI Backend
+python app.py
+
+# In a new terminal, start the React Frontend
 cd frontend
 npm install
 npm run dev
 ```
 
-### Terminal CLI Usage
-If you prefer to trade directly from your terminal without the dashboard:
-```bash
-python cli.py
-```
-This utility will prompt you for the symbol, side, and order parameters sequentially.
+---
 
 ## 📁 Project Structure
-
+Following the suggested task architecture:
 ```text
-├── bot/                # Core trading logic
-│   ├── logs/           # Persistent log storage
-│   ├── orders.py       # Order execution logic
-│   ├── validators.py   # Safety & validation checks
-│   ├── client.py       # Binance API client setup
-│   └── logging_config.py # Shared logging configuration
-├── frontend/           # React dashboard code
-├── app.py              # FastAPI Web Engine
-├── cli.py              # Legacy terminal interface
-└── docker-compose.yml  # Multi-container orchestration
+trading_bot/
+  bot/
+    client.py        # Binance API client setup (configured for Testnet)
+    orders.py        # Order placement logic
+    validators.py    # Input and exchange parameter validation
+    logging_config.py # Centralized logging settings
+    logs/            # Log files storage
+  frontend/          # React Dashboard (Bonus)
+  cli.py             # Main CLI entry point
+  app.py             # FastAPI Web Engine
+  requirements.txt
 ```
-
-## ⚠️ Disclaimer
-
-This project is for educational purposes only. Trading cryptocurrencies involves significant risk. Never trade with money you cannot afford to lose. The authors are not responsible for any financial losses incurred using this software.
 
 ---
 
+## 🧠 Assumptions
+1. **Trading Pair**: The bot assumes the user is trading **USDT-M** pairs (e.g., BTCUSDT).
+2. **Minimum Notional**: Binance Futures typically requires a minimum notional value (e.g., >100 USDT). The bot provides warnings if the calculated notional is too low.
+3. **Environment**: The bot defaults to the **Binance Futures Testnet** URL as specified in the task instructions (`https://testnet.binancefuture.com/fapi`).
+
+---
+
+## 📝 Logging
+All interactions are logged with timestamps and details in:
+`bot/logs/trading.log`
