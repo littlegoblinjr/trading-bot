@@ -1,5 +1,6 @@
 import bot.logging_config
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
@@ -40,7 +41,7 @@ async def read_index():
 class OrderRequest(BaseModel):
     symbol: str
     side: str
-    typee: str
+    type: str
     quantity: float
     price: Optional[float] = None
     stop_price: Optional[float] = None
@@ -54,7 +55,7 @@ async def place_order(order: OrderRequest):
         response = create_order(
             symbol=order.symbol,
             side=order.side,
-            typee=order.typee,
+            typee=order.type,
             quantity=order.quantity,
             price=order.price,
             stop_price=order.stop_price

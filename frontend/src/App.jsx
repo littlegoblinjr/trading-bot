@@ -48,7 +48,7 @@ function App() {
       const res = await axios.post(`${API_BASE}/order`, {
         symbol,
         side,
-        typee,
+        type: typee,
         quantity: parseFloat(quantity),
         price: price ? parseFloat(price) : null,
         stop_price: stopPrice ? parseFloat(stopPrice) : null,

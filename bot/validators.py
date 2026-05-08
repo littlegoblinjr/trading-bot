@@ -1,11 +1,10 @@
-
 def validate_side(side):
     if side not in ["BUY", "SELL"]:
         raise ValueError("Invalid side, It should be BUY or SELL")
     return True
 
-def validate_type(type):
-    if type not in ["MARKET", "LIMIT", "STOP"]:
+def validate_type(typee):
+    if typee not in ["MARKET", "LIMIT", "STOP"]:
         raise ValueError("Invalid type, It should be MARKET, LIMIT, or STOP")
     return True
 
