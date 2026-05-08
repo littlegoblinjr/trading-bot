@@ -158,17 +158,20 @@ function App() {
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs text-gray-500 font-bold uppercase ml-1">Type</label>
-                  <select
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-binance-green transition-all appearance-none"
-                    value={typee}
-                    onChange={(e) => setTypee(e.target.value)}
-                  >
-                    <option value="MARKET">Market</option>
-                    <option value="LIMIT">Limit</option>
-                    <option value="STOP">Stop Limit</option>
-                  </select>
+                <div className="space-y-1 relative">
+                  <label className="text-xs text-gray-500 font-bold uppercase ml-1">Order Type</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['MARKET', 'LIMIT', 'STOP'].map((t) => (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => setTypee(t)}
+                        className={`py-2 text-[10px] font-bold rounded-lg border transition-all ${typee === t ? 'bg-binance-green/20 border-binance-green text-binance-green' : 'bg-white/5 border-white/10 text-gray-500 hover:border-white/20'}`}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="space-y-1">
@@ -239,14 +242,14 @@ function App() {
                   <Wallet className="w-4 h-4" /> Account Balance
                 </div>
                 <div className="text-2xl font-bold">1,245.82 <span className="text-sm text-gray-500 font-normal">USDT</span></div>
-                <div className="text-binance-green text-xs font-bold mt-1">+2.4% (24h)</div>
+                <div className="text-binance-green text-[10px] font-bold mt-1 uppercase tracking-tighter">Live Testnet Funds</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
                 <div className="flex items-center gap-2 mb-4 text-xs text-gray-500 font-bold uppercase tracking-widest">
                   <TrendingUp className="w-4 h-4" /> Unrealized PNL
                 </div>
                 <div className="text-2xl font-bold text-binance-green">+42.15 <span className="text-sm text-gray-500 font-normal">USDT</span></div>
-                <div className="text-gray-500 text-xs font-bold mt-1">2 Open Positions</div>
+                <div className="text-gray-500 text-[10px] font-bold mt-1 uppercase tracking-tighter">Active Simulations</div>
               </div>
             </div>
 
