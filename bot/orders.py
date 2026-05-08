@@ -40,11 +40,11 @@ def create_order(symbol, side, typee, quantity, price=None, stop_price=None):
         )
 
         if typee == "LIMIT":
-            logging.info(f"Created {typee} order | Symbol={symbol} | Side={side} | Quantity={quantity} | Price={price}")
+            logging.info(f"Created {typee} order | ID={order.get('orderId')} | Symbol={symbol} | Side={side} | Quantity={quantity} | Price={price}")
         elif typee == "STOP":
-            logging.info(f"Created {typee} order | Symbol={symbol} | Side={side} | Quantity={quantity} | Stop Price={stop_price}")
+            logging.info(f"Created {typee} order | ID={order.get('orderId')} | Symbol={symbol} | Side={side} | Quantity={quantity} | Stop Price={stop_price}")
         else:
-            logging.info(f"Created {typee} order | Symbol={symbol} | Side={side} | Quantity={quantity}")
+            logging.info(f"Created {typee} order | ID={order.get('orderId')} | Symbol={symbol} | Side={side} | Quantity={quantity}")
         return order
 
     except Exception as e:
