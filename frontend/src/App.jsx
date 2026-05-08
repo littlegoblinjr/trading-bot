@@ -10,7 +10,9 @@ import {
   ShieldAlert
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = window.location.origin === 'http://localhost:5173'
+  ? 'http://localhost:8000/api'
+  : '/api';
 
 function App() {
   const [symbol, setSymbol] = useState('BTCUSDT');
