@@ -8,7 +8,6 @@ import os
 # Import your existing bot logic
 from bot.orders import create_order
 from bot.validators import validate_order
-from bot.account import get_account_summary
 
 app = FastAPI()
 
@@ -78,9 +77,6 @@ async def get_logs():
             return {"logs": f.readlines()[-20:]}
     return {"logs": []}
 
-@app.get("/api/account")
-async def get_account():
-    return get_account_summary()
 
 if __name__ == "__main__":
     import uvicorn
